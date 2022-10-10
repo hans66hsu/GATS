@@ -37,7 +37,7 @@ The implementation consists of two stages. We first train GNNs using the trainin
 
 ### Train
 
-Run `./reproduce_train.sh` to first train GCN and GAT.
+Run `./reproduce_train.sh` to first train GCN and GAT. The trained models will be saved in the `/model` directory.
 
 ### Calibration
 
@@ -49,7 +49,7 @@ Note that the numeric results may be slightly different due to the non-determini
 
 ## Detailed Usage - Example with GCN trained on Cora
 
-We can first train GCN by running the following command
+We can first train GCN by running the following command:
 
 ```
 PYTHONPATH=. python src/train.py --dataset Cora --model GCN --wdecay 5e-4
@@ -57,11 +57,31 @@ PYTHONPATH=. python src/train.py --dataset Cora --model GCN --wdecay 5e-4
 
 ### Calibration with GATS
 
+To calibrate the trained GCN with GATS run:
 
+```
+PYTHONPATH=. python src/calibration.py --dataset Cora --model GCN --wdecay 5e-4 --calibration GATS --config
+```
+
+or
+
+```
+PYTHONPATH=. python src/train.py --dataset Cora --model GCN --wdecay 5e-4 --calibration GATS --cal_wdecay 0.005 --heads 8 --bias 1
+```
+
+The `--config` argument will load the hyperparameters (`--cal_wdecay`, `--heads`, `--bias`) from the `.yaml` files stored in `/config`.
+
+The GATS layer can be found in `/src/calibrator/attention_ts.py`. 
+
+GATS assigns nodes with different scaling factor depending on the **distance to training nodes**. We computed this information offline and stored them in `/data/dist_to_train`. If you have a different splitting from ours, you can either pass `dist_to_train=None` to the GATS layer to generate the information online or run the following comand to generate it offline:
+
+```
+PYTHONPATH=. python -c 'from src.data.data_utils import *; generate_node_to_nearest_training(name="Cora", split_type="5_3f_85", bfs_depth=2)'
+```
 
 ### Calibration with other Baselines
 
-We implemented the muliple basline methods and compare them with GATS:
+We implemented muliple basline methods and compare them with GATS. The implemenation can be found in `/src/calibrator/calibrator.py`. To run the following baseline methods, simpliy set the argument `--calibration` to the following values:
 
 | Baseline Methods  |`--calibration` | Hyperparameters|
 | ------------- | ------------- | ------------- |
@@ -74,7 +94,7 @@ We implemented the muliple basline methods and compare them with GATS:
 | [Dirichlet calibration](https://arxiv.org/pdf/1910.12656.pdf) |`Dirichlet`| `--cal_wdecay` |
 | [Order invariant calibration](https://arxiv.org/pdf/2003.06820.pdf) |`OrderInvariant`| `--cal_wdecay` |
 
-Note that one can simpliy run with the argument `--config` to use the tuned hyperparameters stored in `/config`.
+Similarly, one can run with the argument `--config` to use the tuned hyperparameters stored in `/config`.
 
 ### Argument details
 
