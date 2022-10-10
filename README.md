@@ -69,10 +69,10 @@ We implemented the muliple basline methods and compare them with GATS:
 | [Vector Scaling](https://arxiv.org/pdf/1706.04599.pdf)  | `VS`  | None |
 | [Ensemble Temperature Scaling](http://proceedings.mlr.press/v119/zhang20k/zhang20k.pdf)  | `ETS`  | None |
 | [CaGCN](https://arxiv.org/pdf/2109.14285.pdf) |`CaGCN`| `--cal_wdecay`, `--cal_dropout_rate` |
-| Multi-class isotonic regression |`IRM`| None |
-| Calibration using spline |`Spline`| None |
-| Dirichlet calibration |`Dirichlet`| `--cal_wdecay` |
-| Order invariant calibration |`OrderInvariant`| `--cal_wdecay` |
+| [Multi-class isotonic regression](http://proceedings.mlr.press/v119/zhang20k/zhang20k.pdf) |`IRM`| None |
+| [Calibration using spline](https://arxiv.org/pdf/2006.12800.pdf) |`Spline`| None |
+| [Dirichlet calibration](https://arxiv.org/pdf/1910.12656.pdf) |`Dirichlet`| `--cal_wdecay` |
+| [Order invariant calibration](https://arxiv.org/pdf/2003.06820.pdf) |`OrderInvariant`| `--cal_wdecay` |
 
 Note that one can simpliy run with the argument `--config` to use the tuned hyperparameters stored in `/config`.
 
@@ -120,7 +120,7 @@ optional GATS arguments:
 Please consider citing our work if you find our work useful for your research:
 
 ```
-@InProceedings{gnn_miscal_2020,
+@InProceedings{hsu2022gnncalib,
 title={What Makes Graph Neural Networks Miscalibrated?},
 author={Hans Hao-Hsun Hsu, Yuesong Shen, Christian Tomani, Daniel Cremers},
 booktitle = {NeurIPS},
