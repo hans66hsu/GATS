@@ -38,7 +38,7 @@ def arg_parse():
     parser.add_argument('--dropout_rate', type=float, default=0.5, help='Dropout rate. 1.0 denotes drop all the weights to zero')
     parser.add_argument('--calibration', type=str, default='GATS',  help='Post-hoc calibrators')
     parser.add_argument('--cal_wdecay', type=float, default=None, help='Weight decay for calibration phase')
-    parser.add_argument('--cal_dropout_rate', type=float, default=0.5, help='Dropout rate for calibrators')
+    parser.add_argument('--cal_dropout_rate', type=float, default=0.5, help='Dropout rate for calibrators (CaGCN)')
     parser.add_argument('--folds', type=int, default=3, help='K folds cross-validation for calibration')
     parser.add_argument('--ece-bins', type=int, default=15, help='number of bins for ece')
     parser.add_argument('--ece-scheme', type=str, default='equal_width', choices=ECE.binning_schemes, help='binning scheme for ece')

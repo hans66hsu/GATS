@@ -16,8 +16,8 @@ Source code of out NeurIPS 2022 paper "What Makes Graph Neural Networks Miscalib
 ## Requirements
 
 * python >= 3.6
-* matplotlib 3.2.2
-* numpy 1.19.5
+* matplotlib >= 3.2.2
+* numpy >= 1.19.5
 * pathlib2 2.3.5
 * scipy 1.5.1
 * seaborn 0.11.1
