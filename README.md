@@ -31,9 +31,9 @@ Install the dependencies from requirements file. PyTorch and PyTorch-Geometric a
 pip install -r requirements.txt
 ```
 
-## Usage
+## Fast Usage
 
-The implementation consists of two stages. We first train GNNs using the training script `src/train.py` and then calibrate the model using post-hoc calibration methods with the script `src/calibration.py`.
+The implementation consists of two stages. We first train GNNs using the training script `src/train.py` and then calibrate the model using post-hoc calibration methods with the script `src/calibration.py`. We provided the following bash files to reporduce our results in the paper.
 
 ### Train
 
@@ -46,6 +46,35 @@ Run `./reproduce_cal.sh` to reproduce the whole table in the main paper.
 Run `./reproduce_cal_suppl.sh` to reproduce the results of additional baselines in the supplementary material.
 
 Note that the numeric results may be slightly different due to the non-deterministic Ops on GPU.
+
+## Detailed Usage - Example with GCN trained on Cora
+
+We can first train GCN by running the following command
+
+```
+PYTHONPATH=. python src/train.py --dataset Cora --model GCN --wdecay 5e-4
+```
+
+### Calibration with GATS
+
+
+
+### Calibration with other Baselines
+
+We implemented the muliple basline methods and compare them with GATS:
+
+| Baseline Methods  |`--calibration` | Hyperparameters|
+| ------------- | ------------- | ------------- |
+| [Temperature Scaling](https://arxiv.org/pdf/1706.04599.pdf) | `TS`  | None |
+| [Vector Scaling](https://arxiv.org/pdf/1706.04599.pdf)  | `VS`  | None |
+| [Ensemble Temperature Scaling](http://proceedings.mlr.press/v119/zhang20k/zhang20k.pdf)  | `ETS`  | None |
+| [CaGCN](https://arxiv.org/pdf/2109.14285.pdf) |`CaGCN`| `--cal_wdecay`, `--cal_dropout_rate` |
+| Multi-class isotonic regression |`IRM`| None |
+| Calibration using spline |`Spline`| None |
+| Dirichlet calibration |`Dirichlet`| `--cal_wdecay` |
+| Order invariant calibration |`OrderInvariant`| `--cal_wdecay` |
+
+Note that one can simpliy run with the argument `--config` to use the tuned hyperparameters stored in `/config`.
 
 ### Argument details
 
