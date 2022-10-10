@@ -1,6 +1,6 @@
 # What Makes Graph Neural Networks Miscalibrated?
 
-Source code of out NeurIPS 2022 paper "What Makes Graph Neural Networks Miscalibrated?" [Paper]
+Source code of our NeurIPS 2022 paper "What Makes Graph Neural Networks Miscalibrated?" [Paper]
 
 ### Factors that influence GNN calibration
 1. General under-confident tendency
