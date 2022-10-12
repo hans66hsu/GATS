@@ -57,7 +57,7 @@ PYTHONPATH=. python src/train.py --dataset Cora --model GCN --wdecay 5e-4
 
 ### Calibration with GATS
 
-The train/val/test splits are saved in `/data/split`. In the calibration stage GATS learns its parameters fron the validation set and validate on the training set. For details of training setup, please refer to Appendix A. in our paper.
+The train/val/test splits are saved in `/data/split`. In the calibration stage, GATS is trained on the validation set and validated on the training set for early stopping. For details of the experimental setup, please refer to Appendix A in our paper.
 
 To calibrate the trained GCN with GATS run:
 
@@ -142,9 +142,9 @@ optional GATS arguments:
 Please consider citing our work if you find our work useful for your research:
 
 ```
-@InProceedings{hsu2022gnncalib,
+@InProceedings{hsu2022what,
 title={What Makes Graph Neural Networks Miscalibrated?},
-author={Hans Hao-Hsun Hsu, Yuesong Shen, Christian Tomani, Daniel Cremers},
+author={Hans Hao-Hsun Hsu and Yuesong Shen and Christian Tomani and Daniel Cremers},
 booktitle = {NeurIPS},
 year = {2022}
 }
