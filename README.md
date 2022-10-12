@@ -57,6 +57,8 @@ PYTHONPATH=. python src/train.py --dataset Cora --model GCN --wdecay 5e-4
 
 ### Calibration with GATS
 
+The train/val/test splits are saved in `/data/split`. In the calibration stage GATS learns its parameters fron the validation set and validate on the training set. For details of training setup, please refer to Appendix A. in our paper.
+
 To calibrate the trained GCN with GATS run:
 
 ```
