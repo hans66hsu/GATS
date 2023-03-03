@@ -67,7 +67,7 @@ PYTHONPATH=. python src/calibration.py --dataset Cora --model GCN --wdecay 5e-4 
 or
 
 ```
-PYTHONPATH=. python src/train.py --dataset Cora --model GCN --wdecay 5e-4 --calibration GATS --cal_wdecay 0.005 --heads 8 --bias 1
+PYTHONPATH=. python src/calibration.py --dataset Cora --model GCN --wdecay 5e-4 --calibration GATS --cal_wdecay 0.005 --heads 8 --bias 1
 ```
 
 The `--config` argument will load the hyperparameters (`--cal_wdecay`, `--heads`, `--bias`) from the `.yaml` files stored in `/config`.
