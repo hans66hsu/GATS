@@ -88,7 +88,7 @@ class NodewiseMetrics(Metrics):
         return self.cls_ece_fn(self.logits, self.gts).item()
 
 
-def eval(data, prob, mask_name):
+def eval(data, log_prob, mask_name):
     if mask_name == 'Train':
         mask = data.train_mask
     elif mask_name == 'Val':
@@ -98,7 +98,7 @@ def eval(data, prob, mask_name):
     else:
         raise ValueError("Invalid mask_name")
     eval_result = {}
-    eval = NodewiseMetrics(prob, data.y, mask)
+    eval = NodewiseMetrics(log_prob, data.y, mask)
     acc, nll, brier, ece, kde, cls_ece = eval.acc(), eval.nll(), \
                                 eval.brier(), eval.ece(), eval.kde(), eval.cls_ece()
     eval_result.update({'acc':acc,
