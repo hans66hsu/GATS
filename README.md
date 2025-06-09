@@ -82,7 +82,7 @@ PYTHONPATH=. python -c 'from src.data.data_utils import *; generate_node_to_near
 
 ### Calibration with other Baselines
 
-We implemented muliple basline methods and compare them with GATS. The implemenation can be found in `/src/calibrator/calibrator.py`. To run the following baseline methods, simpliy set the argument `--calibration` to the following values:
+We implemented multiple baseline methods and compare them with GATS. The implemenation can be found in `/src/calibrator/calibrator.py`. To run the following baseline methods, simpliy set the argument `--calibration` to the following values:
 
 | Baseline Methods  |`--calibration` | Hyperparameters|
 | ------------- | ------------- | ------------- |
